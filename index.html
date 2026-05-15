@@ -1415,34 +1415,33 @@ body {
     <div class="setting-item">
       <label>API配置</label>
       <button class="btn btn-sm btn-block" onclick="switchScreen('apiScreen')">修改API设置</button>
+    </div>                           <!-- ← 补上遗漏的 </div> -->
     <div class="setting-item">
-  <label>存档管理</label>
-  <div class="btn-group" style="flex-direction:column">
-    <button class="btn btn-sm btn-block" onclick="openSaveManager()">保存/选择存档</button>
-    <button class="btn btn-sm btn-block" onclick="exportSave()">导出存档文件</button>
-    <button class="btn btn-sm btn-block" onclick="document.getElementById('importInput').click()">导入存档文件</button>
-    <input type="file" id="importInput" class="hidden" accept=".json" onchange="importSave(event)">
-  </div>
-</div>
-<hr class="divider">
-<div class="setting-item">
-  <label>游戏操作</label>
-  <div class="btn-group" style="flex-direction:column">
-    <button class="btn btn-sm btn-block btn-danger" onclick="restartGame()">重启游戏</button>
-  </div>
-</div>
-<div class="setting-item">
-  <div class="text-sm text-dim">提示：在对话区域中，双击内容可编辑重写；每条内容下方悬浮显示回溯/重写/删除操作。</div>
-</div>
+      <label>存档管理</label>
+      <div class="btn-group" style="flex-direction:column">
+        <button class="btn btn-sm btn-block" onclick="openSaveManager()">保存/选择存档</button>
+        <button class="btn btn-sm btn-block" onclick="exportSave()">导出存档文件</button>
+        <button class="btn btn-sm btn-block" onclick="document.getElementById('importInput').click()">导入存档文件</button>
+        <input type="file" id="importInput" class="hidden" accept=".json" onchange="importSave(event)">
+      </div>
+    </div>
+    <hr class="divider">
+    <div class="setting-item">
+      <label>游戏操作</label>
+      <div class="btn-group" style="flex-direction:column">
+        <button class="btn btn-sm btn-block btn-danger" onclick="restartGame()">重启游戏</button>
+      </div>
+    </div>
+    <div class="setting-item">
+      <div class="text-sm text-dim">提示：在对话区域中，双击内容可编辑重写；每条内容下方悬浮显示回溯/重写/删除操作。</div>
+    </div>
   </div>
 </div>
 
-<script>
-<!-- ===== 存档管理模态框 ===== -->
+<!-- ===== 存档管理模态框 ===== -->     <!-- ← 移到 <script> 外面 -->
 <div class="modal" id="saveManagerModal">
   <div class="modal-content">
     <div class="modal-title">存档管理</div>
-    
     <div class="form-group">
       <label class="form-label">存档名称</label>
       <div class="inline-flex">
@@ -1450,17 +1449,16 @@ body {
         <button class="btn btn-sm btn-primary" onclick="saveToSlot()">保存</button>
       </div>
     </div>
-    
     <hr class="divider">
     <div class="form-label mb-8">已有存档</div>
     <div id="saveSlotsList"></div>
-    
     <div class="mt-16">
       <button class="btn btn-sm btn-block" onclick="closeSaveManager()">关闭</button>
     </div>
   </div>
 </div>
-
+  
+<script>
 // ===== GLOBAL STATE =====
 let state = {
   api: { url: '', key: '', model: '', configs: [] },
